@@ -23,6 +23,10 @@ public class CountingSort extends AbstractSorting<Integer> {
 			frequencia[i] = frequencia[i] + frequencia[i-1];
 		}
 		
+		for (int i = rightIndex; i >= leftIndex; i--) {
+			array[frequencia[array[i] -1]] = array[i];
+		}
+		
 	}
 	
 	private static Integer maxArray(Integer[] array) {
