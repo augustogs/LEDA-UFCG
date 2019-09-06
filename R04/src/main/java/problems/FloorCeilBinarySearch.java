@@ -11,7 +11,7 @@ package problems;
  *
  */
 public class FloorCeilBinarySearch implements FloorCeil {
-		
+			
 	@Override
 	public Integer floor(Integer[] array, Integer x) {
 		Integer result = null;
@@ -34,7 +34,11 @@ public class FloorCeilBinarySearch implements FloorCeil {
 	private static Integer floorBinarySearch(Integer[] array, Integer x, int leftIndex, int rightIndex) {
 		int middle = (leftIndex + rightIndex) / 2;
 		if (leftIndex > rightIndex) {
-			return array[rightIndex];
+			if (array[0] > x) {
+				return null;
+			} else {
+				return array[rightIndex];				
+			}
 		}
 		if (array[middle] > x) {
 			return floorBinarySearch(array, x, leftIndex, middle - 1);
@@ -51,7 +55,11 @@ public class FloorCeilBinarySearch implements FloorCeil {
 	private Integer ceilBinarySearch(Integer[] array, Integer x, int leftIndex, int rightIndex) {
 		int middle = (leftIndex + rightIndex) / 2;
 		if (leftIndex > rightIndex) {
-			return array[leftIndex];
+			if (array[array.length - 1] < x) {
+				return null;
+			} else {
+				return array[leftIndex];				
+			}
 		}
 		if (array[middle] > x) {
 			return ceilBinarySearch(array, x, leftIndex, middle - 1);
