@@ -21,8 +21,39 @@ public class OrderStatisticsSelectionImpl<T extends Comparable<T>> implements Or
 	 */
 	@Override
 	public T getOrderStatistics(T[] array, int k) {
-		//TODO implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (array != null && array.length > 0) {
+			int max = 0;
+			int min = 0;
+			for (int i = 0; i < array.length; i++) {
+				if (array[i].compareTo(array[max]) > 0) {
+					max = i;
+				}
+				if (array[i].compareTo(array[min]) < 0) {
+					min = i;
+				}
+			}
+			return auxGetOrderStatistics(array, k, 1, min, max);					
+		}
+		return null;
+		
+	}
+
+	private T auxGetOrderStatistics(T[] array, int k, int qntdMin, int min, int max) {
+		if (array.length == 1) {
+			return null;
+		}
+		if (k == 1) {
+			return array[min];
+		}
+		
+		int nMin = max;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i].compareTo(array[max]) < 0) {
+				nMin = i;
+			}
+			
+		}
+		return auxGetOrderStatistics(array, k, qntdMin + 1, nMin, max);	
 	}
 
 }
