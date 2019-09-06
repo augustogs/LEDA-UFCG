@@ -1,7 +1,7 @@
 package orderStatistic;
 
 public class OrderStatisticsSelectionImpl<T extends Comparable<T>> implements OrderStatistics<T> {
-
+	
 	/**
 	 * Esta eh uma implementacao do calculo da estatistica de ordem seguindo a estrategia 
 	 * de usar o selection sem modificar o array original. Note que seu algoritmo vai 
@@ -54,6 +54,11 @@ public class OrderStatisticsSelectionImpl<T extends Comparable<T>> implements Or
 			
 		}
 		return auxGetOrderStatistics(array, k, qntdMin + 1, nMin, max);	
+	}
+	
+	public static void main(String[] args) {
+		Integer[] array = new Integer[] {3,2,1};
+		System.out.println();
 	}
 
 }

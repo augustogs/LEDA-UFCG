@@ -11,7 +11,7 @@ package problems;
  *
  */
 public class FloorCeilBinarySearch implements FloorCeil {
-			
+		
 	@Override
 	public Integer floor(Integer[] array, Integer x) {
 		Integer result = null;
@@ -33,42 +33,43 @@ public class FloorCeilBinarySearch implements FloorCeil {
 	//Metodo auxiliar do floor.
 	private static Integer floorBinarySearch(Integer[] array, Integer x, int leftIndex, int rightIndex) {
 		int middle = (leftIndex + rightIndex) / 2;
-		if (leftIndex > rightIndex) {
-			if (array[0] > x) {
-				return null;
-			} else {
+		if (array[0] <= x) {
+			if (leftIndex > rightIndex) {
 				return array[rightIndex];				
 			}
+			if (array[middle] > x) {
+				return floorBinarySearch(array, x, leftIndex, middle - 1);
+			}
+			else if (array[middle] < x) {
+				return floorBinarySearch(array, x, middle + 1, rightIndex);
+			} 
+			else {
+				return array[middle];
+			}			
+		} else {
+			return null;	
 		}
-		if (array[middle] > x) {
-			return floorBinarySearch(array, x, leftIndex, middle - 1);
-		}
-		else if (array[middle] < x) {
-			return floorBinarySearch(array, x, middle + 1, rightIndex);
-		} 
-		else {
-			return array[middle];
-		}			
+		
 	}
 
 	//Metodo auxiliar do ceil.
 	private Integer ceilBinarySearch(Integer[] array, Integer x, int leftIndex, int rightIndex) {
 		int middle = (leftIndex + rightIndex) / 2;
-		if (leftIndex > rightIndex) {
-			if (array[array.length - 1] < x) {
-				return null;
-			} else {
-				return array[leftIndex];				
+		if (array[array.length - 1] >= x) {
+			if (leftIndex > rightIndex) {
+				return array[leftIndex];
 			}
-		}
-		if (array[middle] > x) {
-			return ceilBinarySearch(array, x, leftIndex, middle - 1);
-		}
-		else if (array[middle] < x) {
-			return ceilBinarySearch(array, x, middle + 1, rightIndex);
+			if (array[middle] > x) {
+				return ceilBinarySearch(array, x, leftIndex, middle - 1);
+			}
+			else if (array[middle] < x) {
+				return ceilBinarySearch(array, x, middle + 1, rightIndex);
+			} else {
+				return array[middle];
+			}		
 		} else {
-			return array[middle];
-		}		
+			return null;
+		}
 	}
 
 }
