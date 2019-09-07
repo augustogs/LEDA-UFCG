@@ -21,44 +21,40 @@ public class OrderStatisticsSelectionImpl<T extends Comparable<T>> implements Or
 	 */
 	@Override
 	public T getOrderStatistics(T[] array, int k) {
-		if (array != null && array.length > 0) {
-			int max = 0;
-			int min = 0;
+		if (array != null && array.length > 0 && k > 0) {
+			int iMin = 0;
+			int iMax = 0;	
 			for (int i = 0; i < array.length; i++) {
-				if (array[i].compareTo(array[max]) > 0) {
-					max = i;
+				if (array[i].compareTo(array[iMax]) > 0) {
+					iMax = i;
 				}
-				if (array[i].compareTo(array[min]) < 0) {
-					min = i;
+				if (array[i].compareTo(array[iMin]) < 0) {
+					iMin = i;
 				}
 			}
-			return auxGetOrderStatistics(array, k, 1, min, max);					
-		}
-		return null;
-		
-	}
-
-	private T auxGetOrderStatistics(T[] array, int k, int qntdMin, int min, int max) {
-		if (array.length == 1) {
+			return auxGetOrderStatistics(array, k, 1, iMin, iMax);					
+		} else {
 			return null;
 		}
-		if (k == 1) {
-			return array[min];
-		}
 		
-		int nMin = max;
-		for (int i = 0; i < array.length; i++) {
-			if (array[i].compareTo(array[max]) < 0) {
-				nMin = i;
-			}
-			
+	}	
+	
+	private T auxGetOrderStatistics(T[] array, int k, int qntdMinimos, int iMin, int iMax) {
+		if (qntdMinimos == k) {
+			return array[iMin];
 		}
-		return auxGetOrderStatistics(array, k, qntdMin + 1, nMin, max);	
+		if (qntdMinimos == array.length) {
+			return null;
+		}
+		int lastMin = iMax;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i].compareTo(array[lastMin]) < 0) {
+				if (array[i].compareTo(array[iMin]) > 0) {
+					lastMin = i;
+				}
+			}
+		}
+		return auxGetOrderStatistics(array, k, qntdMinimos + 1, lastMin, iMax);
 	}
 	
-	public static void main(String[] args) {
-		Integer[] array = new Integer[] {3,2,1};
-		System.out.println();
-	}
-
 }
