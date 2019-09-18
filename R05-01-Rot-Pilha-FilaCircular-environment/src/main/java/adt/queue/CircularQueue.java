@@ -37,7 +37,8 @@ public class CircularQueue<T> implements Queue<T> {
 		if (isEmpty()) {
 			throw new QueueUnderflowException();
 		}
-		T value = this.array[this.head];
+		
+		T element = this.array[head];
 		if (this.head == this.tail) {
 			this.head = -1;
 			this.tail = -1;
@@ -45,7 +46,7 @@ public class CircularQueue<T> implements Queue<T> {
 			this.head = (this.head + 1) % this.array.length;
 		}
 		this.elements--;
-		return value;
+		return element;
 	}
 
 	@Override
