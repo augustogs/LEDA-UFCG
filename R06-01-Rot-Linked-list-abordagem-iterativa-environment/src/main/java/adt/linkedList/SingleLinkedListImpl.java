@@ -70,8 +70,10 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 						prev = aux;
 						aux = aux.next;
 					}
-					prev.next = aux.next;  
-				}			
+					if (!aux.isNIL()) {
+						prev.next = aux.next;  												
+					}
+				}		
 			}		
 		}
 	}

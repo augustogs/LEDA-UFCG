@@ -53,6 +53,37 @@ public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 	}
 	
 	@Override
+	public void remove(T element) {
+		if (element != null && !this.isEmpty()) {
+			if (this.head.data.equals(element)) {
+				this.removeFirst();
+			} else {
+				DoubleLinkedListNode<T> prev = (DoubleLinkedListNode<T>) this.head;
+				DoubleLinkedListNode<T> aux = (DoubleLinkedListNode<T>) this.head;
+				while (!aux.isNIL() && !aux.data.equals(element)) {
+					prev = aux;
+					aux = (DoubleLinkedListNode<T>) aux.next;
+				}
+				if (!aux.isNIL()) {
+					((DoubleLinkedListNode<T>) aux.next).previous = prev;
+					prev.next = aux.next;						
+				}				
+			}
+			
+			
+			
+//			DoubleLinkedListNode<T> prev = (DoubleLinkedListNode<T>) this.head;
+//			DoubleLinkedListNode<T> aux = (DoubleLinkedListNode<T>) this.head;
+//			while (!aux.isNIL() && !aux.data.equals(element)) {
+//				prev = aux;
+//				aux = (DoubleLinkedListNode<T>) aux.next;
+//			}
+//			((DoubleLinkedListNode<T>) aux.next).previous = aux.previous;
+//			aux.previous.next = aux.next;
+		}
+	}
+	
+	@Override
 	public void removeLast() {
 		if (!this.last.isNIL()) {
 			this.last = this.last.previous;
