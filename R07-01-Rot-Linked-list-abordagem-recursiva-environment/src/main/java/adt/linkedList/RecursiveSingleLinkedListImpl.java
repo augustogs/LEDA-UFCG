@@ -19,7 +19,7 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 		if (isEmpty()) {
 			return 0;
 		} else {
-			return 1 + next.size();
+			return 1 + this.next.size();
 		}
 	}
 
@@ -30,22 +30,10 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 			if (this.data.equals(element)) {
 				result = this.data;
 			} else {
-				result = next.search(element);
-//				result = search(element, this.next);
+				result = this.next.search(element);
 			}
 		}
 		return result;
-	}
-	
-	private T search(T element, RecursiveSingleLinkedListImpl<T> node) {
-		if (node.data == null) {
-			return null;
-		}
-		else if (node.data.equals(element)) {
-			return node.data;
-		} else {
-			return search(element, node.next);
-		}
 	}
 
 	@Override
@@ -55,28 +43,17 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 			this.next = new RecursiveSingleLinkedListImpl<T>();
 		} else {
 			this.next.insert(element);
-//			insert(element, this.next);
-		}
-	}
-	
-	//auxiliar recursivo.
-	private void insert(T element, RecursiveSingleLinkedListImpl<T> node) {
-		if (node.data == null) {
-			node.data = element;
-			node.next = new RecursiveSingleLinkedListImpl<T>();
-		} else {
-			insert(element, node.next);
 		}
 	}
 
 	@Override
 	public void remove(T element) {
-		if (!isEmpty() && this.data != null) {
+		if (!isEmpty()) {
 			if (this.data.equals(element)) {
 				this.data = next.data;
 				this.next = next.next;
 			} else {
-				next.remove(element);
+				this.next.remove(element);
 			}
 		}
 	}
@@ -94,7 +71,7 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 	}
 
 	private T[] toArray(T[] array, RecursiveSingleLinkedListImpl<T> node, int i) {
-		if (node.data == null) {
+		if (node.isEmpty()) {
 			return array;
 		} else {
 			array[i] = node.data;
