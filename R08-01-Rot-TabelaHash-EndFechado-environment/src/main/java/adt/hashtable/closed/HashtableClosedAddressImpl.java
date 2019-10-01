@@ -71,14 +71,19 @@ public class HashtableClosedAddressImpl<T> extends
 			LinkedList<T> list = getInternalList(element);
 			if (list == null) {
 				list = new LinkedList<T>();
+				list.addFirst(element);
 				this.table[index] = list;
-			}
-			if (!list.isEmpty()) {
-				this.COLLISIONS++;
-			}
-			if (!list.contains(element)) {
-				list.add(element);
 				this.elements++;
+			} else {
+				if (list.isEmpty()) {
+					list.addFirst(element);
+					this.elements++; 
+				}
+				else if (!list.isEmpty() && !list.contains(element)) {
+					list.add(element);
+					this.COLLISIONS++;
+					this.elements++;
+				}	
 			}		
 		}
 	}
