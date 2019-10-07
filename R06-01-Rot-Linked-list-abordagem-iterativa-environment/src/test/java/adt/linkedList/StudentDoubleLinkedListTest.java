@@ -24,9 +24,9 @@ public class StudentDoubleLinkedListTest extends StudentLinkedListTest {
 
 	private void getImplementations() {
 		// TODO O aluno deve ajustar aqui para instanciar sua implementação
-		lista1 = null;
-		lista2 = null;
-		lista3 = null;
+		lista1 = new DoubleLinkedListImpl<>();
+		lista2 = new DoubleLinkedListImpl<>();
+		lista3 = new DoubleLinkedListImpl<>();
 	}
 
 	// Métodos de DoubleLinkedList
@@ -48,4 +48,5 @@ public class StudentDoubleLinkedListTest extends StudentLinkedListTest {
 		((DoubleLinkedList<Integer>) lista1).removeLast();
 		Assert.assertArrayEquals(new Integer[] { 3, 2 }, lista1.toArray());
 	}
+	
 }

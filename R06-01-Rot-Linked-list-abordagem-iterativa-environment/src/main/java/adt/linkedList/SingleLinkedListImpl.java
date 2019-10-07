@@ -17,11 +17,9 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 	public int size() {
 		SingleLinkedListNode<T> aux = this.head;
 		int cont = 0;
-		while (aux != null) {
-			if (!aux.isNIL()) {
-				cont++;
-			}
-			aux = aux.next;				
+		while (!aux.isNIL()) {
+			cont++;
+			aux = aux.next;	
 		}
 		return cont;
 	}
@@ -29,61 +27,68 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 	@Override
 	public T search(T element) {
 		T result = null;
-		SingleLinkedListNode<T> aux = this.head;
-		while (aux != null) {
-			if (aux.data == element) {
-				result = aux.data;
-			}
-			aux = aux.next;
+		if (element != null) {
+			SingleLinkedListNode<T> aux = this.head;
+			while (!aux.isNIL()) {
+				if (aux.data.equals(element)) {
+					result = aux.data;
+				}
+				aux = aux.next;
+			}			
 		}
-		
 		return result;
 	}
 
 	@Override
 	public void insert(T element) {
-		SingleLinkedListNode<T> newNode = new SingleLinkedListNode<T>(element, new SingleLinkedListNode<>());
-		if (isEmpty()) {
-			this.head = newNode;
-		}
-		else {
-			SingleLinkedListNode<T> aux = this.head;
-			while (aux.next != null) {
-				aux = aux.next;
+		if (element != null) {
+			if (isEmpty()) {
+				this.head.data = element;
+				this.head.next = new SingleLinkedListNode<T>();
 			}
-			aux.next = newNode;
+			else {
+				SingleLinkedListNode<T> aux = this.head;
+				while (!aux.isNIL()) {
+					aux = aux.next;
+				}
+				aux.data = element;
+				aux.next = new SingleLinkedListNode<T>();
+			}			
 		}
 	}
 
 	@Override
 	public void remove(T element) {
-		if (!isEmpty()) {
-			if (this.head.data == element) {
-				this.head = this.head.next;
-			} else {
-				SingleLinkedListNode<T> prev = new SingleLinkedListNode<>();
-				SingleLinkedListNode<T> aux = this.head;
-				while (aux != null && aux.data != element) {
-					prev = aux;
-					aux = aux.next;
-				}
-				prev.next = aux.next;  
-			}
-			
+		if (element != null) {
+			if (!isEmpty()) {
+				if (this.head.data.equals(element)) {
+					this.head = this.head.next;
+				} else {
+					SingleLinkedListNode<T> prev = new SingleLinkedListNode<>();
+					SingleLinkedListNode<T> aux = this.head;
+					while (!aux.isNIL() && !aux.data.equals(element)) {
+						prev = aux;
+						aux = aux.next;
+					}
+					if (!aux.isNIL()) {
+						prev.next = aux.next;  												
+					}
+				}		
+			}		
 		}
 	}
 
 	@Override
 	public T[] toArray() {
+		@SuppressWarnings("unchecked")
 		T[] array = (T[]) new Comparable[this.size()];
+		
 		int i = 0;
 		SingleLinkedListNode<T> aux = this.head;
-		while (aux != null) {
-			if (!aux.isNIL()) {
-				array[i] = aux.data;
-				i++;
-			}
-			aux = aux.next;				
+		while (!aux.isNIL()) {
+			array[i] = aux.data;
+			i++;
+			aux = aux.next;
 		}
 		return array;
 	}
