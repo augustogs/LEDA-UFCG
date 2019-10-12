@@ -1,4 +1,4 @@
-package linkedList;
+package adt.linkedList;
 
 /**
  * The interface of a generic linked list.
@@ -49,5 +49,5 @@ public interface LinkedList<T> {
 	 * @return an array containing all elements in the structure in the order
 	 *         they appear
 	 */
-	public T[] toArray();	
+	public T[] toArray();
 }

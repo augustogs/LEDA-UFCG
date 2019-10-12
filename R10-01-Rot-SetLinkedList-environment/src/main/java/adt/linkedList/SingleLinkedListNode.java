@@ -1,7 +1,6 @@
-package linkedList;
+package adt.linkedList;
 
 public class SingleLinkedListNode<T> {
-	
 	protected T data;
 	protected SingleLinkedListNode<T> next;
 
