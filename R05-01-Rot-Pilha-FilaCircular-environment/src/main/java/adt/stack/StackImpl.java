@@ -50,5 +50,5 @@ public class StackImpl<T> implements Stack<T> {
 			return this.array[top + 1];
 		}
 	}
-
+	
 }
