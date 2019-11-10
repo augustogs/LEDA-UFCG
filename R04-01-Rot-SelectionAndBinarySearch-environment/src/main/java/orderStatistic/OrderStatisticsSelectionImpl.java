@@ -57,6 +57,7 @@ public class OrderStatisticsSelectionImpl<T extends Comparable<T>> implements Or
 		return auxGetOrderStatistics(array, k, qntdMinimos + 1, lastMin, iMax);
 	}
 	
+
 	public static void main(String[] args) {
 		Integer[] array = new Integer[] {5,4,1,7};
 		Integer num = new OrderStatisticsSelectionImpl<Integer>().getOrderStatistics(array, 2);
