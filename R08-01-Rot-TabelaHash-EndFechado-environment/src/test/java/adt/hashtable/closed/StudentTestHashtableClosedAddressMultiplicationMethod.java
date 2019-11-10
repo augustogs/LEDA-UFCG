@@ -35,21 +35,23 @@ public class StudentTestHashtableClosedAddressMultiplicationMethod {
 	@Test
 	public void testInsert() {
 		assertEquals(13, table1.getCOLLISIONS());
-		table1.insert(105); // nao produz colisao
+		table1.insert(105); // nao produz colisao	
 		assertEquals(13, table1.getCOLLISIONS());
 		assertEquals(89, table1.indexOf(105));
+		
 		table1.insert(110); // nao produz colisao
 		assertEquals(13, table1.getCOLLISIONS());
 		assertEquals(98, table1.indexOf(110));
+		
 		table1.insert(101); //
 		assertEquals(13, table1.getCOLLISIONS());
 		assertEquals(42, table1.indexOf(101));
+		
 		table1.insert(102); //
 		assertEquals(14, table1.getCOLLISIONS());
 		assertEquals(3, table1.indexOf(102));
 
-		table2.insert(103); // nao produz colisao inserindo 1 elemento na talbe
-							// vazia
+		table2.insert(103); // nao produz colisao inserindo 1 elemento na tabela vazia
 		assertEquals(0, table2.getCOLLISIONS());
 		assertEquals(65, table2.indexOf(103));
 	}
