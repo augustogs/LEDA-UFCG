@@ -16,6 +16,7 @@ package problems;
  *
  */
 public class OrderStatisticsSortedUnion<T extends Comparable<T>> {
+	
 	public T statisticsOrder(T[] array1, T[] array2, int k) {
 		T result = null;
 		if (k == 1) {
@@ -36,7 +37,7 @@ public class OrderStatisticsSortedUnion<T extends Comparable<T>> {
 		
 		if (k > array1.length + array2.length) {
 			result = null;
-		}
+		}	
 		else {
 			int cont = 1;
 			int i = 0;
