@@ -65,6 +65,7 @@ public class SetLinkedListImpl<T> extends SingleLinkedListImpl<T> implements Set
 				auxHead = auxHead.getNext();
 			}
 		}
+		this.removeDuplicates();
 		return result;
 	}
 
