@@ -15,16 +15,10 @@ public class StudentLinkedListTest {
 		getImplementations();
 
 		// Lista com 3 elementos.
-<<<<<<< HEAD
-//		lista1.insert(3);
-//		lista1.insert(2);
-//		lista1.insert(1);
-=======
+
 		lista1.insert(3);
 		lista1.insert(2);
 		lista1.insert(1);
->>>>>>> f18c998a04623bfa6991a0bf88e16e456443ed55
-
 	}
 
 	private void getImplementations() {
@@ -35,11 +29,7 @@ public class StudentLinkedListTest {
 
 	@Test
 	public void testIsEmpty() {
-<<<<<<< HEAD
-//		Assert.assertFalse(lista1.isEmpty());
-=======
 		Assert.assertFalse(lista1.isEmpty());
->>>>>>> f18c998a04623bfa6991a0bf88e16e456443ed55
 		Assert.assertTrue(lista2.isEmpty());
 	}
 
