@@ -8,13 +8,6 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 	public RecursiveDoubleLinkedListImpl() {
 
 	}
-<<<<<<< HEAD
-
-	@Override
-	public void insertFirst(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
-=======
 	
 	@Override
 	public void insert(T element) {
@@ -63,15 +56,10 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 			this.data = element;
 			this.next = oldNode;		
 		}
->>>>>>> f18c998a04623bfa6991a0bf88e16e456443ed55
 	}
 
 	@Override
 	public void removeFirst() {
-<<<<<<< HEAD
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
-=======
 		if (!isEmpty()) {
 			if (this.next.isEmpty()) {
 				this.data = null;
@@ -80,15 +68,10 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 				this.next = this.next.next;			
 			}
 		}
->>>>>>> f18c998a04623bfa6991a0bf88e16e456443ed55
 	}
 
 	@Override
 	public void removeLast() {
-<<<<<<< HEAD
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
-=======
 		if (!isEmpty()) {
 			if (this.next.isEmpty()) {
 				this.data = null;
@@ -98,7 +81,7 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 				((RecursiveDoubleLinkedListImpl<T>) this.next).removeLast();
 			}
 		}
->>>>>>> f18c998a04623bfa6991a0bf88e16e456443ed55
+
 	}
 
 	public RecursiveDoubleLinkedListImpl<T> getPrevious() {
