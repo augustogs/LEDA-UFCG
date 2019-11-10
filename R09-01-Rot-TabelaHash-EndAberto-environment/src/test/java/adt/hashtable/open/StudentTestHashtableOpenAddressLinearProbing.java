@@ -83,8 +83,8 @@ public class StudentTestHashtableOpenAddressLinearProbing {
 		table1.remove(new HashtableElement(3));
 		table1.remove(new HashtableElement(4));
 		table1.remove(new HashtableElement(5));
-		assertTrue(table1.isEmpty());
 
+		assertTrue(table1.isEmpty());
 		assertTrue(table2.isEmpty());
 	}
 
@@ -97,8 +97,8 @@ public class StudentTestHashtableOpenAddressLinearProbing {
 		table1.insert(new HashtableElement(8));
 		table1.insert(new HashtableElement(9));
 		table1.insert(new HashtableElement(10));
+		
 		assertTrue(table1.isFull());
-
 		assertFalse(table2.isFull());
 	}
 
