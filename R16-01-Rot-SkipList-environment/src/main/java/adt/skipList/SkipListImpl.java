@@ -100,10 +100,11 @@ public class SkipListImpl<T> implements SkipList<T> {
 		}
 		auxNode = auxNode.getForward(0);
 		
-		if (auxNode.getKey() != key) {
-			auxNode = null;
+		if (auxNode.getKey() == key) {
+			return auxNode;
+		} else {
+			return null;
 		}
-		return auxNode;
 	}
 
 	@Override
