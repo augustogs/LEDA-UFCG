@@ -21,6 +21,7 @@ public class RBTreeImpl<T extends Comparable<T>> extends BSTImpl<T>
 
 	private int blackHeight(RBNode<T> node) {
 		int resp = 0;
+		
 		if (!node.isEmpty()) {
 			int blackHeightLeft = blackHeight((RBNode<T>) node.getLeft());
 			int blackHeightRight = blackHeight((RBNode<T>) node.getRight());		
